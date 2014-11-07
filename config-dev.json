@@ -1,0 +1,8 @@
+{
+	"db" : {
+		"host" : "localhost:27000",
+		"database" : "handybid",
+		"user" : "handybid",
+		"password" : "handybid"
+	}
+}
