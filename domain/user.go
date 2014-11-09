@@ -9,10 +9,13 @@ import (
 type UserRepository interface {
 	StoreUser(user User)
 	FindUserById(id string) User
+	ListUsers() ([]User, error)
 }
 
 type User struct {
-	ID           bson.ObjectId `bson:"_id,omitempty"`
+	// FIXME: domain types should have no dependency on any mongo bson data types
+	//        Can only be done by having repository specific data types that maps to types in here
+	ID           bson.ObjectId `json:"id" bson:"_id,omitempty"`
 	DispName     string
 	Name         string
 	Phone        string

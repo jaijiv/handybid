@@ -27,9 +27,9 @@ func main() {
 	// Inject userInteractor from usecases into web service handler
 	webserviceHandler.UserInteractor = userInteractor
 
-	// Register a new user
+	// Register user /list users
 	http.HandleFunc("/users", func(w http.ResponseWriter, r *http.Request) {
-		webserviceHandler.RegisterUser(w, r)
+		webserviceHandler.HandleUser(w, r)
 	})
 	http.ListenAndServe(":8080", nil)
 }

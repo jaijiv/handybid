@@ -13,7 +13,20 @@ func (MongoRepo) StoreUser(user domain.User) {
 	defer ms.Session.Close()
 
 	ms.UserCol().Insert(&user)
-	log.Print("Inserted user into mongo")
+	log.Println("Inserted user into db")
+}
+
+func (MongoRepo) ListUsers() ([]domain.User, error) {
+	ms := infrastructure.MongoSession()
+	defer ms.Session.Close()
+
+	var dusers []domain.User
+	err := ms.UserCol().Find(nil).All(&dusers)
+	if err != nil {
+		return nil, err
+	}
+	log.Println("Listed all users from db")
+	return dusers, nil
 }
 
 func (MongoRepo) FindUserById(id string) domain.User {
