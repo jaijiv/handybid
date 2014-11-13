@@ -21,17 +21,6 @@ type WebserviceHandler struct {
 	UserInteractor UserInteractor
 }
 
-func (handler WebserviceHandler) HandleUser(w http.ResponseWriter, r *http.Request) {
-	if r.Method == "POST" {
-		handler.RegisterUser(w, r)
-	} else if r.Method == "GET" {
-		handler.ListUsers(w, r)
-	} else {
-		serve404(w)
-		return
-	}
-}
-
 func (handler WebserviceHandler) RegisterUser(w http.ResponseWriter, r *http.Request) {
 	log.Println("RegisterUser called...")
 	// Parse json request
