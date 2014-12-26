@@ -16,6 +16,6 @@ Sample social app written in go and mongo
   - infrastructure (same level as interfaces.webcontrollers)
     - DB connection specifics to mongo and other infra related code
   - interfaces.webcontrollers (same level as infrastructure)
-    -REST interfaces. Defines interfaces implemented by usecases
+    - REST interfaces. Defines interfaces implemented by usecases
 
   - main.go : usecases module is injected into webcontroller. user repository (interfaces.repositories.mongo implementation) is injected into usecases. This way each of the outer modules only provides implementations for interfaces provided by lower layer. This makes modules pluggable, easily mocked for testing and loosely coupled.

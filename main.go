@@ -3,6 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"runtime"
+
 	"github.com/adampresley/sigint"
 	"github.com/gorilla/mux"
 	"github.com/jaijiv/handybid/infrastructure"
@@ -11,10 +16,6 @@ import (
 	"github.com/jaijiv/handybid/interfaces/webcontrollers/middleware"
 	"github.com/jaijiv/handybid/usecases"
 	"github.com/justinas/alice"
-	"log"
-	"net/http"
-	"os"
-	"runtime"
 )
 
 func init() {
@@ -26,7 +27,7 @@ func init() {
 }
 
 var (
-	port              = flag.Int("port", 8080, "Port for web server")
+	port              = flag.Int("port", 8090, "Port for web server")
 	host              = flag.String("host", "localhost", "Address for web server")
 	webserviceHandler = new(webcontrollers.WebserviceHandler)
 )
